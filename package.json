@@ -16,6 +16,7 @@
   "dependencies": {
     "antd": "^2.11.2",
     "axios": "^0.16.2",
+    "react-csv":"^1.0.8",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "foreman": "^2.0.0",
