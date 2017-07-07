@@ -148,7 +148,7 @@ this.setPromise(nextProps.promise);
             },
 
            {
-                title: 'Internal TX',
+                title: 'Has internal TX',
                 dataIndex: 'contractAddress',
                 key: 'contractAddress',
                width: "8%",
@@ -166,7 +166,7 @@ this.setPromise(nextProps.promise);
 
 
             {
-                title: 'Cost',
+                title: 'Amount (ETH)',
                 dataIndex: 'gas',
                 key: 'gas',
                 width: "8%",
@@ -207,7 +207,7 @@ this.setPromise(nextProps.promise);
   
             <div className="tableList">
             <div  size = { config.size } className = "table-operations" >
-            <Button  size = { config.size } onClick = { this.setAgeSort } > by month </Button> <Button onClick = { this.clearFilters } > by quarters </Button > <Button onClick = { this.setAgeSort } > by year < /Button> < Button onClick = { this.clearFilters } > by type < /Button > <Button onClick = { this.setAgeSort } > by Type</Button>
+            <Button  size = { config.size } onClick = { this.setAgeSort } > Monthly </Button> <Button onClick = { this.clearFilters } > Quarterly </Button > <Button onClick = { this.setAgeSort } > Yearly < /Button> < Button onClick = { this.clearFilters } > by type < /Button >
 
             <Button  size = { config.size } onClick = { this.clearAll } > Clear filters and sorters </Button> 
             <Button icon = "download"
