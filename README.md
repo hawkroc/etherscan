@@ -4,7 +4,7 @@
 *  You can change the MongoDB url in `server.js`
 *  `mongoose.connect('mongodb://localhost:27017/ai_test')`
 *  run the script make frontend and backend started
-*  'npm install'
+*  `npm install -g create-react-app`
 *  `npm run start-all`
 
 ## Frontend:
