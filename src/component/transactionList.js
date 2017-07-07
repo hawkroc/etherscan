@@ -35,6 +35,7 @@ class TransactionList extends React.Component {
   notification[type]({
     message: 'Notification',
     description: 'This record type be changed',
+    duration :2,   
   });
 };
 

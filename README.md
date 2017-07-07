@@ -4,6 +4,7 @@
 *  You can change the MongoDB url in `server.js`
 *  `mongoose.connect('mongodb://localhost:27017/ai_test')`
 *  run the script make frontend and backend started
+*  'npm install'
 *  `npm run start-all`
 
 ## Frontend:
@@ -15,13 +16,4 @@
 * express
 * mongodb
 
-## Api for CRUD
-* Create:
-  methode:post,url:api/product
-* Read:
-  methode:get,url:api/search/{keyword}
-* Update:
-  methode:put,url:api/product/{product_id}
-* Delete
-  methode:delete,url:api/product/{product_id},
 
