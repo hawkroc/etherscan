@@ -49,15 +49,7 @@ class TransactionList extends React.Component {
 
   setPromise = (promise) => {
     promise.then((value) => {
-      //  axios.post('http://localhost:3001/api/record', {
-      //   record: value.result,
-      // })
-      // .then( (response)=> {
-      //   console.log(response);
-      // })
-      // .catch( (error)=> {
-      //   console.log(error);
-      // });
+    
       this.setState({data: value.result, loading: false, show: !this.state.show});
     }).catch((error) => {
       console.error(error);
@@ -102,13 +94,20 @@ class TransactionList extends React.Component {
         title: 'Time',
         dataIndex: 'timeStamp',
         key: 'timeStamp',
-        width: "12%",
+        width: "10%",
         render: (text) => {
           return new Date(parseInt(text) * 1000).toISOString();
         },
         sorter: (a, b) => a.timeStamp - b.timeStamp,
         sortOrder: sortedInfo.columnKey === 'timeStamp' && sortedInfo.order,
-      }, {
+      }, 
+         {
+        title: 'value',
+        dataIndex: 'value',
+        key: 'value',
+        width: "6%",
+      },
+      {
         title: 'From',
         dataIndex: 'from',
         key: 'from',
@@ -152,7 +151,7 @@ class TransactionList extends React.Component {
         title: 'Has internal TX',
         dataIndex: 'contractAddress',
         key: 'contractAddress',
-        width: "8%",
+        width: "6%",
         render: (text) => {
           return text === "" ? 'No' : 'Yes';
         },
@@ -169,7 +168,7 @@ class TransactionList extends React.Component {
         title: 'Amount (ETH)',
         dataIndex: 'gas',
         key: 'gas',
-        width: "8%",
+        width: "6%",
         render: (text, record) => {
           return (text * Math.pow(10, -18) * record.gasPrice).toFixed(8);
         },
@@ -178,7 +177,7 @@ class TransactionList extends React.Component {
       {
         title: ' Rule types',
         key: 'blockNumber',
-        width: "20%",
+        width: "18%",
         render: (text, record) => (
           <div>
 
@@ -200,7 +199,6 @@ class TransactionList extends React.Component {
           </div>
         ),
       },
-
     ];
     return (
       <div>
@@ -210,7 +208,7 @@ class TransactionList extends React.Component {
             <Button size={ config.size } onClick={ this.setAgeSort }> Monthly </Button>
             <Button onClick={ this.clearFilters }> Quarterly </Button >
             <Button onClick={ this.setAgeSort }> Yearly </Button>
-            < Button onClick={ this.clearFilters }> By type </Button>
+            <Button onClick={ this.clearFilters }> By type </Button>
             <Button size={ config.size } onClick={ this.clearAll }> Clear filters and sorters </Button>
             <Button icon="download" size={ config.size }>
               <CSVLink filename={"export.csv"} data={(this.state.data) ? (this.state.data) : []}>Xero

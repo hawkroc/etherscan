@@ -2,7 +2,10 @@
 import { Row, Col,Affix } from 'antd';
 import { Form, Input, Button, Icon } from 'antd';
 import React, { Component } from 'react';
-import Fetchjson from './Fetchjson';
+import {GetdataFromApi,GetCurrentBlock} from './Fetchjson';
+// import getCurrentBlock from  './Fetchjson';
+// import GetdataFromApi from  './Fetchjson';
+
 import axios from 'axios';
 const currentBlock="https://api.etherscan.io/api?module=proxy&action=eth_blockNumber"
 const FormItem = Form.Item;
@@ -18,16 +21,11 @@ class InputSearch extends React.Component {
 
 
 componentDidMount =()=>{
-  //console.log('this test'+getCurrentBlock());
- axios.get("https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=E9MYVKUN5TNUBH6P4E5IWEUHAXGZCXQSNV")
-      .then((res) => {
-        console.log('this is test'+ res.result);
-      })
-this.props.changeItem(Fetchjson('98158','9999999'));
+  GetCurrentBlock().then(value=>console.log(value));
+this.props.changeItem(GetdataFromApi('98158','9999999'));
 
 
 }
-
 
 
   emitEmpty = () => {
@@ -45,7 +43,7 @@ this.props.changeItem(Fetchjson('98158','9999999'));
 
 
   onclickButton = () => {
-    this.props.changeItem(Fetchjson(this.state.start,this.state.end));
+    this.props.changeItem(GetdataFromApi(this.state.start,this.state.end));
  
   };
 

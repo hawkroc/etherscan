@@ -17,6 +17,7 @@ const ProductsSchema = new Schema({
   cumulativeGasUsed:String,
   gasUsed:String,
   confirmations:String,
+  value:String,
   type:String
 
 
