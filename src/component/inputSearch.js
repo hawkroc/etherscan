@@ -2,6 +2,7 @@
 import { Row, Col,Affix } from 'antd';
 import { Form, Input, Button, Icon } from 'antd';
 import React, { Component } from 'react';
+import TimeRelatedForm from './searchTime';
 import {GetdataFromApi,GetCurrentBlock} from './Fetchjson';
 // import getCurrentBlock from  './Fetchjson';
 // import GetdataFromApi from  './Fetchjson';
@@ -21,8 +22,9 @@ class InputSearch extends React.Component {
 
 
 componentDidMount =()=>{
-  GetCurrentBlock().then(value=>console.log(value));
-this.props.changeItem(GetdataFromApi('98158','9999999'));
+//  GetCurrentBlock().then(value=> this.setState({end: value.result}));
+// console.log("end  "+this.state.end);
+this.props.changeItem(GetCurrentBlock());
 
 
 }
@@ -56,43 +58,25 @@ this.props.changeItem(GetdataFromApi('98158','9999999'));
       <div className="inputSearch">
 
     <Row>
- <Col  span={2}>
+ <Col offset={1}  span={2}>
  <h1 className="">
   BlockKeeper
  </h1>
 
     </Col>
-      <Col offset={3} span={6}>
-     
+      <Col offset={6} span={6}>
+       <TimeRelatedForm/>
    
-      <Input
-        placeholder="startblock"
-        prefix={<Icon type="compass" />}
-        suffix={suffix}
-        // value={userName}
-        onChange={this.onChangeStart}
-        ref={node => this.userNameInput = node}
-         size="large"
-      />
-</Col>
- <Col offset={1} span={6}>
-       <Input
-        placeholder="endblock"
-        prefix={<Icon type="compass" />}
-        // suffix={suffix}
-        // value={userName}
-        onChange={this.onChangeEnd}
-        ref={node => this.userNameInput = node}
-         size="large"
-      />
       </Col>
  <Col offset={1} span={3}>
        <Button onClick={this.onclickButton} type="primary" shape="circle" icon="search" />
        </Col>
        </Row>
+      
       </div>
    
           </div>
+         
     );
   }
 	}
