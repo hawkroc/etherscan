@@ -30,7 +30,15 @@ router.get('/', (req, res)=> {
   res.json({ message: 'API success?'});
 });
 
+const schedule = require('node-schedule');
 
+ scheduleCronstyle=()=>{
+    schedule.scheduleJob('10 * * * * *', ()=>{
+        console.log('test:' + new Date());
+    }); 
+};
+
+scheduleCronstyle();
 
 app.use('/api', router);
 
