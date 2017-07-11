@@ -208,9 +208,9 @@ class TransactionList extends React.Component {
         <div className="tableList">
           <div size={ config.size } className="table-operations">
             <Button size={ config.size } onClick={ this.setAgeSort }> Monthly </Button>
-            <Button onClick={ this.clearFilters }> Quarterly </Button >
-            <Button onClick={ this.setAgeSort }> Yearly </Button>
-            <Button onClick={ this.clearFilters }> By type </Button>
+            <Button size={ config.size }  onClick={ this.clearFilters }> Quarterly </Button >
+            <Button size={ config.size }  onClick={ this.setAgeSort }> Yearly </Button>
+            <Button size={ config.size }  onClick={ this.clearFilters }> By Type </Button>
             <Button size={ config.size } onClick={ this.clearAll }> Clear filters and sorters </Button>
             <Button icon="download" size={ config.size }>
               <CSVLink filename={"export.csv"} data={(this.state.data) ? (this.state.data) : []}>Xero
