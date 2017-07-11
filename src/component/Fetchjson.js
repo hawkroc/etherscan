@@ -1,10 +1,13 @@
 import axios from 'axios';
-//98158&endblock=9999999&sort=asc&apikey=E9MYVKUN5TNUBH6P4E5IWEUHAXGZCXQSNV
-const blockNumber=16;//blockNumber every house
-const url = "http://api.etherscan.io/api?module=account&action=txlist&address=0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae&startblock=";
+const url = "http://api.etherscan.io/api?module=account&action=txlist&address=";
 const key = "&apikey=E9MYVKUN5TNUBH6P4E5IWEUHAXGZCXQSNV";
-export const GetdataFromApi = (start, end) => {
-    let final = url + start + "&endblock=" + end + "&sort=asc" + key;
+var currentNumber;
+export const GetdataFromApi = (start, end,configaddress) => {
+          console.log(start+"start"+end);
+       end=end>0?currentNumber:Math.round(end)+currentNumber;
+        start=start>0?currentNumber:Math.round(start)+currentNumber;
+        console.log(start+"end"+end);
+    let final = url +configaddress+"&startblock="+ start + "&endblock=" + end + "&sort=asc" + key;
     console.log(final);
     return fetch(final, {
         method: 'get'
@@ -13,21 +16,16 @@ export const GetdataFromApi = (start, end) => {
     }).catch((err) => {
         // Error :(
     });
-
-    // return promise;
-    //return fetch(final);
 };
 
 const currentBlock = "https://api.etherscan.io/api?module=proxy&action=eth_blockNumber"
 
-export const GetCurrentBlock = () => {
+export const GetCurrentBlock = (address) => {
     let final = currentBlock + key;
     console.log(final);
    return axios.get(final).then(
    	(response) =>{  
-        let temp=parseInt(response.data.result, 16);
-          // console.log(temp);
-          //GetdataFromApi("98158",temp);
-   		return  GetdataFromApi(temp-150000,temp);}
+       currentNumber=parseInt(response.data.result, 16);
+   		return  GetdataFromApi(currentNumber-150000,currentNumber,address);}
    	);
 }

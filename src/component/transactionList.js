@@ -1,7 +1,6 @@
 import {Table, Button, Icon, notification} from 'antd';
 import React from 'react';
 import json2csv from 'json2csv';
-import axios from 'axios';
 import {CSVLink} from 'react-csv';
 import {Select, Popover} from 'antd';
 const {Option, OptGroup} = Select;
