@@ -1,18 +1,16 @@
 //server.js
 'use strict'
+const  schedule = require('./server/schedule');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const  Product = require('./model/products');
+const  product = require('./model/products');
 const app = express();
 const router = express.Router();
 
 const port = 3001;
-
-//mongoose.connect('mongodb://<DBUSERNAME>:<DBPASSWORD>@ds019836.mlab.com:19836/bryandb');
-//mongoose.connect('mongodb://testMongodb:test@ds123312.mlab.com:23312/ai_test');
-mongoose.connect('mongodb://localhost:27017/demo')
-//now we should configure the APi to use bodyParser and look for JSON data in the body
+const uri = 'mongodb://localhost:27017/demo';
+mongoose.createConnection(uri, { server: { poolSize: 4 }});
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -30,13 +28,14 @@ router.get('/', (req, res)=> {
   res.json({ message: 'API success?'});
 });
 
-const schedule = require('node-schedule');
 
- scheduleCronstyle=()=>{
-    schedule.scheduleJob('10 * * * * *', ()=>{
-        console.log('test:' + new Date());
-    }); 
-};
+
+
+//  scheduleCronstyle=()=>{
+//     schedule.scheduleJob('10 * * * * *', ()=>{
+//         console.log('test:' + new Date());
+//     }); 
+// };
 
 scheduleCronstyle();
 
