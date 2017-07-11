@@ -6,3 +6,5 @@ const  schedule = require('node-schedule');
         console.log('scheduleCronstyle:' + new Date());
     }); 
 }
+
+

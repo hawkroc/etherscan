@@ -4,7 +4,7 @@ const  schedule = require('./server/schedule');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const  product = require('./model/products');
+const  record = require('./model/records');
 const app = express();
 const router = express.Router();
 

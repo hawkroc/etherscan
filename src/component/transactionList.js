@@ -101,10 +101,13 @@ class TransactionList extends React.Component {
         sortOrder: sortedInfo.columnKey === 'timeStamp' && sortedInfo.order,
       }, 
          {
-        title: 'value',
+        title: 'Amount(ETH) ',
         dataIndex: 'value',
         key: 'value',
         width: "6%",
+        render: (text, record) => {
+          return (text * Math.pow(10, -18)).toFixed(8);
+        },
       },
       {
         title: 'From',
@@ -147,7 +150,7 @@ class TransactionList extends React.Component {
       },
 
       {
-        title: 'Has internal TX',
+        title: 'Internal Tx?',
         dataIndex: 'contractAddress',
         key: 'contractAddress',
         width: "6%",
@@ -164,7 +167,7 @@ class TransactionList extends React.Component {
 
 
       {
-        title: 'Amount (ETH)',
+        title: 'Tx Fee (ETH)',
         dataIndex: 'gas',
         key: 'gas',
         width: "6%",
@@ -174,7 +177,7 @@ class TransactionList extends React.Component {
       },
 
       {
-        title: ' Rule types',
+        title: ' Tx type',
         key: 'blockNumber',
         width: "18%",
         render: (text, record) => (
