@@ -2,9 +2,11 @@ import axios from 'axios';
 const url = "http://api.etherscan.io/api?module=account&action=txlist&address=";
 const key = "&apikey=E9MYVKUN5TNUBH6P4E5IWEUHAXGZCXQSNV";
 var currentNumber;
-export const GetdataFromApi = (start, end,configaddress) => {   
+export const GetdataFromApi = (start, end,configaddress,isFirst) => { 
+  if(!isFirst){
        end=end>0?currentNumber:Math.round(end)+currentNumber;
         start=start>0?currentNumber:Math.round(start)+currentNumber;
+      }
     let final = url +configaddress+"&startblock="+ start + "&endblock=" + end + "&sort=asc" + key;
     console.log(final);
     return fetch(final, {
@@ -24,6 +26,7 @@ export const GetCurrentBlock = (address) => {
    return axios.get(final).then(
    	(response) =>{  
        currentNumber=parseInt(response.data.result, 16);
-   		return  GetdataFromApi(currentNumber-15000,currentNumber,address);}
+       console.log("currentNumber"+currentNumber);
+   		return  GetdataFromApi(currentNumber-150000,currentNumber,address,true);}
    	);
 }

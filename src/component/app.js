@@ -1,45 +1,56 @@
-import { QueueAnim,BackTop } from 'antd';
-import React, { Component } from 'react';
+import {QueueAnim, BackTop} from 'antd';
+import React, {Component} from 'react';
 import InputSearch from './inputSearch';
 import TransactionList from './transactionList';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import PageTabs from './pageTabs';
 
 export default class App extends Component {
 
- state = {
-    searchText: '',
-    promise:{},
-  };
- constructor(props, context) {
-    super(props, context);
-  };
+    state = {
+        searchText: '',
+        promise: {},
+    };
+
+    constructor(props, context) {
+        super(props, context);
+    };
 
 
- changeItem = (item)=> {
-		this.setState({
-			promise: item
-		});	
-	};
+    changeItem = (item) => {
+        console.log("this is promise " + item);
+        this.setState({
+            promise: item
+        });
+    };
 
- render() {
-   return (
+    render() {
+        return (
 
-   	<div>
-     <InputSearch changeItem={this.changeItem}/>
-      <hr/>
-      <TransactionList promise={this.state.promise}/>
-       
-   <div>
-    <BackTop>
-      <div className="ant-back-top-inner">UP</div>
-    </BackTop>
-    
-  </div>
-    
- 
+          <div>
+            <div>  <InputSearch changeItem={ this.changeItem }/></div> 
+            <div>  <PageTabs promise = {this.state.promise}/></div>
+            <BackTop>
+            <div className = "ant-back-top-inner"> UP </div>
+            </BackTop>
+          </div>
 
-   
-</div>
-    );
-  }
+    )
+        ;
+    }
 }
+
+
+//   <div>
+//           <div>  <InputSearch changeItem={ this.changeItem }/></div> 
+//             <hr/>
+
+//           <div>  <PageTabs promise = {this.state.promise}/></div>
+// <div>
+//     <BackTop>
+//         <div
+//         className = "ant-back-top-inner"> UP </div> </
+//         BackTop>
+
+//         </div>
+
+//         </div>

@@ -1,4 +1,5 @@
 import {Table, Button, Icon, notification} from 'antd';
+import { Menu, Dropdown } from 'antd';
 import React from 'react';
 import json2csv from 'json2csv';
 import {CSVLink} from 'react-csv';
@@ -7,6 +8,20 @@ const {Option, OptGroup} = Select;
 
 const config = {size: 'large',};
 const fields = ['BlockNumber', 'Time'];
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/">Monthly</a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/">Quarterly</a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/">Yearly</a>
+    </Menu.Item>
+  </Menu>
+);
+
 
 class TransactionList extends React.Component {
   state = {
@@ -16,6 +31,7 @@ class TransactionList extends React.Component {
     error: null,
     filteredInfo: null,
     sortedInfo: null,
+    csvData:[],
   };
   handleChange = (pagination, filters, sorter) => {
     // console.log('Various parameters', pagination, filters, sorter);
@@ -45,11 +61,34 @@ class TransactionList extends React.Component {
 //   });
 // };
 
+// var a1 = ['a', 'b', 'c'];
+// var a2 = a1.map(function(item) { 
+//     return item.toUpperCase(); 
+// });
+// console.log(a2); // logs A,B,C
+
+parseDataFromApi=()=>{
+  let temp=this.state.data.map((item)=> { 
+    return {
+    Time:new Date(parseInt(item.timeStamp) * 1000).toLocaleDateString(),
+    From:item.from,
+    To: item.to,
+    Tx: (item.gas * Math.pow(10, -18) * item.gasPrice).toFixed(8),
+    Success:item.isError,
+    Note:null,
+    Txtype:null,
+
+  }; 
+});
+  this.setState({csvData:temp});
+}
 
   setPromise = (promise) => {
     promise.then((value) => {
     
       this.setState({data: value.result, loading: false, show: !this.state.show});
+      this.parseDataFromApi();
+     
     }).catch((error) => {
       console.error(error);
     });
@@ -95,20 +134,20 @@ class TransactionList extends React.Component {
         key: 'timeStamp',
         width: "10%",
         render: (text) => {
-          return new Date(parseInt(text) * 1000).toISOString();
+          return new Date(parseInt(text) * 1000).toLocaleDateString();
         },
         sorter: (a, b) => a.timeStamp - b.timeStamp,
         sortOrder: sortedInfo.columnKey === 'timeStamp' && sortedInfo.order,
       }, 
-         {
-        title: 'Amount(ETH) ',
-        dataIndex: 'value',
-        key: 'value',
-        width: "6%",
-        render: (text, record) => {
-          return (text * Math.pow(10, -18)).toFixed(8);
-        },
-      },
+      //    {
+      //   title: 'Amount(ETH) ',
+      //   dataIndex: 'value',
+      //   key: 'value',
+      //   width: "6%",
+      //   render: (text, record) => {
+      //     return (text * Math.pow(10, -18)).toFixed(8);
+      //   },
+      // },
       {
         title: 'From',
         dataIndex: 'from',
@@ -133,29 +172,46 @@ class TransactionList extends React.Component {
         ),
 
 
-      }, {
-        title: 'Success',
-        dataIndex: 'isError',
-        key: 'isError',
-        width: "6%",
-        render: (text) => {
-          return text === '0' ? 'true' : 'false';
-        },
-        filters: [
-          {text: 'true', value: '0'},
-          {text: 'false', value: '1'},
-        ],
-        filteredValue: filteredInfo.isError || null,
-        onFilter: (value, record) => record.isError.includes(value),
-      },
+      }, 
+
 
       {
-        title: 'Internal Tx?',
+        title: 'Spent',
+        dataIndex: 'gas',
+        key: 'gas',
+        width: "6%",
+        render: (text, record) => {
+          return (text * Math.pow(10, -18) * record.gasPrice).toFixed(8);
+        },
+      },
+
+
+
+
+
+      // {
+      //   title: 'Success',
+      //   dataIndex: 'isError',
+      //   key: 'isError',
+      //   width: "6%",
+      //   render: (text) => {
+      //     return text === '0' ? 'true' : 'false';
+      //   },
+      //   filters: [
+      //     {text: 'true', value: '0'},
+      //     {text: 'false', value: '1'},
+      //   ],
+      //   filteredValue: filteredInfo.isError || null,
+      //   onFilter: (value, record) => record.isError.includes(value),
+      // },
+
+      {
+        title: 'Note',
         dataIndex: 'contractAddress',
         key: 'contractAddress',
         width: "6%",
         render: (text) => {
-          return text === "" ? 'No' : 'Yes';
+          return text === "" ? '' : 'with internal tx';
         },
         filters: [
           {text: 'No', value: 'No'},
@@ -163,17 +219,6 @@ class TransactionList extends React.Component {
         ],
         filteredValue: filteredInfo.contractAddress || null,
         onFilter: (value, record) => record.contractAddress.includes(value),
-      },
-
-
-      {
-        title: 'Tx Fee (ETH)',
-        dataIndex: 'gas',
-        key: 'gas',
-        width: "6%",
-        render: (text, record) => {
-          return (text * Math.pow(10, -18) * record.gasPrice).toFixed(8);
-        },
       },
 
       {
@@ -184,7 +229,7 @@ class TransactionList extends React.Component {
           <div>
 
             <Select
-              defaultValue="2"
+              defaultValue="3"
               style={{width: 150}}
               onChange={() => this.openNotificationWithIcon('success')}
             >
@@ -192,10 +237,15 @@ class TransactionList extends React.Component {
               <OptGroup label="GST">
                 <Option value="1">office purchase</Option>
                 <Option value="2">computer purchase</Option>
+                   <Option value="3"> General Expenses</Option>
+                          <Option value="4">  Rent</Option>
+                                 <Option value="5"> Staff Expenses</Option>
+               
+               
               </OptGroup>
 
               <OptGroup label="Non-GST">
-                <Option value="3">Payroll</Option>
+                <Option value="6">Payroll</Option>
               </OptGroup>
             </Select>
           </div>
@@ -206,14 +256,17 @@ class TransactionList extends React.Component {
       <div>
 
         <div className="tableList">
-          <div size={ config.size } className="table-operations">
-            <Button size={ config.size } onClick={ this.setAgeSort }> Monthly </Button>
-            <Button size={ config.size }  onClick={ this.clearFilters }> Quarterly </Button >
-            <Button size={ config.size }  onClick={ this.setAgeSort }> Yearly </Button>
-            <Button size={ config.size }  onClick={ this.clearFilters }> By Type </Button>
-            <Button size={ config.size } onClick={ this.clearAll }> Clear filters and sorters </Button>
-            <Button icon="download" size={ config.size }>
-              <CSVLink filename={"export.csv"} data={(this.state.data) ? (this.state.data) : []}>Xero
+          <div  className="table-operations">
+            
+            <Button   onClick={ this.clearFilters }> By Type </Button>
+            
+             <Dropdown overlay={menu} placement="bottomLeft">
+      <Button >Summary</Button>
+    </Dropdown>
+
+
+            <Button icon="download">
+              <CSVLink filename={"export.csv"} data={(this.state.csvData) ? (this.state.csvData) : []}>Xero
                 feed(csv)</CSVLink>
             </Button>
           </div>
@@ -232,4 +285,6 @@ class TransactionList extends React.Component {
   }
 }
 export default TransactionList;
+
+
 

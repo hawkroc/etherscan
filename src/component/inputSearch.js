@@ -8,6 +8,7 @@ import {GetdataFromApi,GetCurrentBlock} from './fetchjson';
 import axios from 'axios';
 const configaddress="0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae";
 const FormItem = Form.Item;
+const logo="./img/blockeeper_Blue.png";
 class InputSearch extends React.Component {
  constructor(props) {
     super(props);
@@ -48,7 +49,7 @@ this.props.changeItem(GetCurrentBlock(this.state.address));
 
 
   onclickButton = () => {
-    this.props.changeItem(GetdataFromApi(this.state.start,this.state.end,this.state.address));
+    this.props.changeItem(GetdataFromApi(this.state.start,this.state.end,this.state.address,false));
  
   };
 
@@ -58,13 +59,15 @@ this.props.changeItem(GetCurrentBlock(this.state.address));
     const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
     return (
       <div>
-      <div className="inputSearch">
+      <div className="inputSearch ">
 
     <Row>
  <Col offset={1}  span={2}>
- <h1 className="">
-  BlockKeeper
- </h1>
+ <div >
+ <img className="logo" src={require("../../img/blockeeper_Blue.png")}/>
+ </div>
+
+
 
     </Col>
       <Col offset={6} span={6}>
