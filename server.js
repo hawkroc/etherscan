@@ -31,13 +31,8 @@ router.get('/', (req, res)=> {
 
 
 
-//  scheduleCronstyle=()=>{
-//     schedule.scheduleJob('10 * * * * *', ()=>{
-//         console.log('test:' + new Date());
-//     }); 
-// };
 
-scheduleCronstyle();
+// scheduleCronstyle();
 
 app.use('/api', router);
 

@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import InputSearch from './inputSearch';
 import TransactionList from './transactionList';
 import PageTabs from './pageTabs';
-
+import enUS from 'antd/lib/locale-provider/en_US';
+import {LocaleProvider,locales  } from 'antd';
 export default class App extends Component {
 
     state = {
@@ -27,11 +28,13 @@ export default class App extends Component {
         return (
 
           <div>
+    
             <div>  <InputSearch changeItem={ this.changeItem }/></div> 
             <div>  <PageTabs promise = {this.state.promise}/></div>
             <BackTop>
             <div className = "ant-back-top-inner"> UP </div>
             </BackTop>
+      
           </div>
 
     )

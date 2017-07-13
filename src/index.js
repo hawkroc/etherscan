@@ -5,6 +5,7 @@ import App from './component/app';
 // import InputAccount from './component/inputAccount';
 import './css/style.css';
 
+
 // ReactDOM.render(
 //   <InputAccount />,
 //   document.getElementById('account')
