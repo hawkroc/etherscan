@@ -32,7 +32,7 @@ router.get('/', (req, res)=> {
 
 
 
-// scheduleCronstyle();
+ scheduleCronstyle();
 
 app.use('/api', router);
 
