@@ -1,49 +1,50 @@
-import { Tabs } from 'antd';
+import {Tabs} from 'antd';
 import React from 'react';
 import TransactionList from './transactionList';
 import LineChart from './chartLine';
 const TabPane = Tabs.TabPane;
 
 class PageTabs extends React.Component {
-state = {
-    promise:{},
-    data:[],
+  state = {
+    promise: {},
+    data: [],
   };
- callback=(key)=> {
+  callback = (key) => {
 
-}
-constructor(props, context) {
+  }
+
+  constructor(props, context) {
     super(props, context);
   };
-
 
 
   componentWillReceiveProps = (nextProps) => {
     this.setPromise(nextProps.promise);
   };
 
- setPromise = (promise) => {
- this.setState({promise: promise});
+  setPromise = (promise) => {
+    this.setState({promise: promise});
 
   };
 
- 
 
-	render() {
-    return(
-     <Tabs defaultActiveKey="1" onChange={this.callback}>
-    <TabPane tab="Busines Account" key="1">
-   <TransactionList promise={this.state.promise} />
-    </TabPane>
-    <TabPane tab="Dashboard" key="2">
-    <LineChart />
-    </TabPane>
-  </Tabs>
+  render() {
+    return (
+      <Tabs defaultActiveKey="1" onChange={this.callback}>
+        <TabPane tab="Busines Account" key="1">
+          <TransactionList promise={this.state.promise}/>
+        </TabPane>
+        <TabPane tab="Dashboard" key="2">
+          <LineChart />
+        </TabPane>
+        <TabPane tab="Setting" key="3">
+          <LineChart />
+        </TabPane>
+      </Tabs>
     );
   }
 
 }
-
 
 
 export default PageTabs;

@@ -3,319 +3,319 @@ import { Stat } from 'g2';
 import React, { Component } from 'react';
 const dataTemp=[
   {
-    "time": "9/1",
-    "price": 10,
-    "Acct": "Business "
+    "Time": "9/1",
+    "Cash Flow": 10,
+    "Account": "Business "
   },
   {
-    "time": "9/1",
-    "price": 30,
-    "Acct": "Foundation"
+    "Time": "9/1",
+    "Cash Flow": 30,
+    "Account": "Foundation"
   },
   {
-    "time": "9/2",
-    "price": 12,
-    "Acct": "Business "
+    "Time": "9/2",
+    "Cash Flow": 12,
+    "Account": "Business "
   },
   {
-    "time": "9/2",
-    "price": -32,
-    "Acct": "Foundation"
+    "Time": "9/2",
+    "Cash Flow": -32,
+    "Account": "Foundation"
   },
   {
-    "time": "9/3",
-    "price": -11,
-    "Acct": "Business "
+    "Time": "9/3",
+    "Cash Flow": -11,
+    "Account": "Business "
   },
   {
-    "time": "9/3",
-    "price": -35,
-    "Acct": "Foundation"
+    "Time": "9/3",
+    "Cash Flow": -35,
+    "Account": "Foundation"
   },
   {
-    "time": "9/4",
-    "price": -15,
-    "Acct": "Business "
+    "Time": "9/4",
+    "Cash Flow": -15,
+    "Account": "Business "
   },
   {
-    "time": "9/4",
-    "price": -40,
-    "Acct": "Foundation"
+    "Time": "9/4",
+    "Cash Flow": -40,
+    "Account": "Foundation"
   },
   {
-    "time": "9/5",
-    "price": 20,
-    "Acct": "Business "
+    "Time": "9/5",
+    "Cash Flow": 20,
+    "Account": "Business "
   },
   {
-    "time": "9/5",
-    "price": 42,
-    "Acct": "Foundation"
+    "Time": "9/5",
+    "Cash Flow": 42,
+    "Account": "Foundation"
   },
   {
-    "time": "9/6",
-    "price": 22,
-    "Acct": "Business "
+    "Time": "9/6",
+    "Cash Flow": 22,
+    "Account": "Business "
   },
   {
-    "time": "9/6",
-    "price": 35,
-    "Acct": "Foundation"
+    "Time": "9/6",
+    "Cash Flow": 35,
+    "Account": "Foundation"
   },
   {
-    "time": "9/7",
-    "price": 21,
-    "Acct": "Business "
+    "Time": "9/7",
+    "Cash Flow": 21,
+    "Account": "Business "
   },
   {
-    "time": "9/7",
-    "price": 36,
-    "Acct": "Foundation"
+    "Time": "9/7",
+    "Cash Flow": 36,
+    "Account": "Foundation"
   },
   {
-    "time": "9/8",
-    "price": 25,
-    "Acct": "Business "
+    "Time": "9/8",
+    "Cash Flow": 25,
+    "Account": "Business "
   },
   {
-    "time": "9/8",
-    "price": 31,
-    "Acct": "Foundation"
+    "Time": "9/8",
+    "Cash Flow": 31,
+    "Account": "Foundation"
   },
   {
-    "time": "9/9",
-    "price": 31,
-    "Acct": "Business "
+    "Time": "9/9",
+    "Cash Flow": 31,
+    "Account": "Business "
   },
   {
-    "time": "9/9",
-    "price": 35,
-    "Acct": "Foundation"
+    "Time": "9/9",
+    "Cash Flow": 35,
+    "Account": "Foundation"
   },
   {
-    "time": "9/10",
-    "price": 32,
-    "Acct": "Business "
+    "Time": "9/10",
+    "Cash Flow": 32,
+    "Account": "Business "
   },
   {
-    "time": "9/10",
-    "price": 36,
-    "Acct": "Foundation"
+    "Time": "9/10",
+    "Cash Flow": 36,
+    "Account": "Foundation"
   },
   {
-    "time": "9/11",
-    "price": 28,
-    "Acct": "Business "
+    "Time": "9/11",
+    "Cash Flow": 28,
+    "Account": "Business "
   },
   {
-    "time": "9/11",
-    "price": 40,
-    "Acct": "Foundation"
+    "Time": "9/11",
+    "Cash Flow": 40,
+    "Account": "Foundation"
   },
   {
-    "time": "9/12",
-    "price": 29,
-    "Acct": "Business "
+    "Time": "9/12",
+    "Cash Flow": 29,
+    "Account": "Business "
   },
   {
-    "time": "9/12",
-    "price": 42,
-    "Acct": "Foundation"
+    "Time": "9/12",
+    "Cash Flow": 42,
+    "Account": "Foundation"
   },
   {
-    "time": "9/13",
-    "price": 40,
-    "Acct": "Business "
+    "Time": "9/13",
+    "Cash Flow": 40,
+    "Account": "Business "
   },
   {
-    "time": "9/13",
-    "price": 40,
-    "Acct": "Foundation"
+    "Time": "9/13",
+    "Cash Flow": 40,
+    "Account": "Foundation"
   },
   {
-    "time": "9/14",
-    "price": 41,
-    "Acct": "Business "
+    "Time": "9/14",
+    "Cash Flow": 41,
+    "Account": "Business "
   },
   {
-    "time": "9/14",
-    "price": 38,
-    "Acct": "Foundation"
+    "Time": "9/14",
+    "Cash Flow": 38,
+    "Account": "Foundation"
   },
   {
-    "time": "9/15",
-    "price": 45,
-    "Acct": "Business "
+    "Time": "9/15",
+    "Cash Flow": 45,
+    "Account": "Business "
   },
   {
-    "time": "9/15",
-    "price": 40,
-    "Acct": "Foundation"
+    "Time": "9/15",
+    "Cash Flow": 40,
+    "Account": "Foundation"
   },
   {
-    "time": "9/16",
-    "price": 50,
-    "Acct": "Business "
+    "Time": "9/16",
+    "Cash Flow": 50,
+    "Account": "Business "
   },
   {
-    "time": "9/16",
-    "price": 40,
-    "Acct": "Foundation"
+    "Time": "9/16",
+    "Cash Flow": 40,
+    "Account": "Foundation"
   },
   {
-    "time": "9/17",
-    "price": 65,
-    "Acct": "Business "
+    "Time": "9/17",
+    "Cash Flow": 65,
+    "Account": "Business "
   },
   {
-    "time": "9/17",
-    "price": 38,
-    "Acct": "Foundation"
+    "Time": "9/17",
+    "Cash Flow": 38,
+    "Account": "Foundation"
   },
   {
-    "time": "9/18",
-    "price": 45,
-    "Acct": "Business "
+    "Time": "9/18",
+    "Cash Flow": 45,
+    "Account": "Business "
   },
   {
-    "time": "9/18",
-    "price": 36,
-    "Acct": "Foundation"
+    "Time": "9/18",
+    "Cash Flow": 36,
+    "Account": "Foundation"
   },
   {
-    "time": "9/19",
-    "price": 50,
-    "Acct": "Business "
+    "Time": "9/19",
+    "Cash Flow": 50,
+    "Account": "Business "
   },
   {
-    "time": "9/19",
-    "price": 30,
-    "Acct": "Foundation"
+    "Time": "9/19",
+    "Cash Flow": 30,
+    "Account": "Foundation"
   },
   {
-    "time": "9/20",
-    "price": 51,
-    "Acct": "Business "
+    "Time": "9/20",
+    "Cash Flow": 51,
+    "Account": "Business "
   },
   {
-    "time": "9/20",
-    "price": 29,
-    "Acct": "Foundation"
+    "Time": "9/20",
+    "Cash Flow": 29,
+    "Account": "Foundation"
   },
   {
-    "time": "9/21",
-    "price": 65,
-    "Acct": "Business "
+    "Time": "9/21",
+    "Cash Flow": 65,
+    "Account": "Business "
   },
   {
-    "time": "9/21",
-    "price": 28,
-    "Acct": "Foundation"
+    "Time": "9/21",
+    "Cash Flow": 28,
+    "Account": "Foundation"
   },
   {
-    "time": "9/22",
-    "price": 60,
-    "Acct": "Business "
+    "Time": "9/22",
+    "Cash Flow": 60,
+    "Account": "Business "
   },
   {
-    "time": "9/22",
-    "price": 25,
-    "Acct": "Foundation"
+    "Time": "9/22",
+    "Cash Flow": 25,
+    "Account": "Foundation"
   },
   {
-    "time": "9/23",
-    "price": 62,
-    "Acct": "Business "
+    "Time": "9/23",
+    "Cash Flow": 62,
+    "Account": "Business "
   },
   {
-    "time": "9/23",
-    "price": 28,
-    "Acct": "Foundation"
+    "Time": "9/23",
+    "Cash Flow": 28,
+    "Account": "Foundation"
   },
   {
-    "time": "9/24",
-    "price": 65,
-    "Acct": "Business "
+    "Time": "9/24",
+    "Cash Flow": 65,
+    "Account": "Business "
   },
   {
-    "time": "9/24",
-    "price": 29,
-    "Acct": "Foundation"
+    "Time": "9/24",
+    "Cash Flow": 29,
+    "Account": "Foundation"
   },
   {
-    "time": "9/25",
-    "price": 45,
-    "Acct": "Business "
+    "Time": "9/25",
+    "Cash Flow": 45,
+    "Account": "Business "
   },
   {
-    "time": "9/25",
-    "price": 30,
-    "Acct": "Foundation"
+    "Time": "9/25",
+    "Cash Flow": 30,
+    "Account": "Foundation"
   },
   {
-    "time": "9/26",
-    "price": 55,
-    "Acct": "Business "
+    "Time": "9/26",
+    "Cash Flow": 55,
+    "Account": "Business "
   },
   {
-    "time": "9/26",
-    "price": 40,
-    "Acct": "Foundation"
+    "Time": "9/26",
+    "Cash Flow": 40,
+    "Account": "Foundation"
   },
   {
-    "time": "9/27",
-    "price": 59,
-    "Acct": "Business "
+    "Time": "9/27",
+    "Cash Flow": 59,
+    "Account": "Business "
   },
   {
-    "time": "9/27",
-    "price": 32,
-    "Acct": "Foundation"
+    "Time": "9/27",
+    "Cash Flow": 32,
+    "Account": "Foundation"
   },
   {
-    "time": "9/28",
-    "price": 52,
-    "Acct": "Business "
+    "Time": "9/28",
+    "Cash Flow": 52,
+    "Account": "Business "
   },
   {
-    "time": "9/28",
-    "price": 33,
-    "Acct": "Foundation"
+    "Time": "9/28",
+    "Cash Flow": 33,
+    "Account": "Foundation"
   },
   {
-    "time": "9/29",
-    "price": 53,
-    "Acct": "Business "
+    "Time": "9/29",
+    "Cash Flow": 53,
+    "Account": "Business "
   },
   {
-    "time": "9/29",
-    "price": 34,
-    "Acct": "Foundation"
+    "Time": "9/29",
+    "Cash Flow": 34,
+    "Account": "Foundation"
   },
   {
-    "time": "9/30",
-    "price": 40,
-    "Acct": "Business "
+    "Time": "9/30",
+    "Cash Flow": 40,
+    "Account": "Business "
   },
   {
-    "time": "9/30",
-    "price": 30,
-    "Acct": "Foundation"
+    "Time": "9/30",
+    "Cash Flow": 30,
+    "Account": "Foundation"
   },
   {
-    "time": "9/31",
-    "price": 45,
-    "Acct": "Business "
+    "Time": "9/31",
+    "Cash Flow": 45,
+    "Account": "Business "
   },
   {
-    "time": "9/31",
-    "price": 35,
-    "Acct": "Foundation"
+    "Time": "9/31",
+    "Cash Flow": 35,
+    "Account": "Foundation"
   }
 ];
 
 const Line = createG2(chart => {
-  chart.line().position('time*price').color('Acct').shape('spline').size(2);
+  chart.line().position('Time*Cash Flow').color('Account').shape('spline').size(2);
   chart.render();
 });
 
@@ -353,8 +353,8 @@ class LineChart extends Component {
 // parseDataFromApi=(array)=>{
 //   let temp=array.map((item)=> { 
 //     return {
-//     Time:new Date(parseInt(item.timeStamp) * 1000).toISOString(),  
-//     Tx: (item.gas * Math.pow(10, -15) * item.gasPrice).toFixed(8),
+//     Time:new Date(parseInt(item.TimeStamp) * 1000).toISOString(),  
+//     Tx: (item.gas * Math.pow(10, -15) * item.gasCash Flow).toFixed(8),
 //     Txt:item.gasUsed,
 //   }; 
 // });

@@ -1,5 +1,5 @@
 import {Table, Button, Icon, notification} from 'antd';
-import { Menu, Dropdown } from 'antd';
+import {Menu, Dropdown} from 'antd';
 import React from 'react';
 import json2csv from 'json2csv';
 import {CSVLink} from 'react-csv';
@@ -22,6 +22,16 @@ const menu = (
   </Menu>
 );
 
+const menuType = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/">GST</a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/">Non-GST</a>
+    </Menu.Item>
+  </Menu>
+);
 
 class TransactionList extends React.Component {
   state = {
@@ -31,7 +41,7 @@ class TransactionList extends React.Component {
     error: null,
     filteredInfo: null,
     sortedInfo: null,
-    csvData:[],
+    csvData: [],
   };
   handleChange = (pagination, filters, sorter) => {
     // console.log('Various parameters', pagination, filters, sorter);
@@ -67,28 +77,28 @@ class TransactionList extends React.Component {
 // });
 // console.log(a2); // logs A,B,C
 
-parseDataFromApi=()=>{
-  let temp=this.state.data.map((item)=> { 
-    return {
-    Time:new Date(parseInt(item.timeStamp) * 1000).toLocaleDateString(),
-    From:item.from,
-    To: item.to,
-    Tx: (item.gas * Math.pow(10, -18) * item.gasPrice).toFixed(8),
-    Success:item.isError,
-    Note:null,
-    Txtype:null,
+  parseDataFromApi = () => {
+    let temp = this.state.data.map((item) => {
+      return {
+        Time: new Date(parseInt(item.timeStamp) * 1000).toLocaleDateString(),
+        From: item.from,
+        To: item.to,
+        Tx: (item.gas * Math.pow(10, -18) * item.gasPrice).toFixed(8),
+        Success: item.isError,
+        Note: null,
+        Txtype: null,
 
-  }; 
-});
-  this.setState({csvData:temp});
-}
+      };
+    });
+    this.setState({csvData: temp});
+  }
 
   setPromise = (promise) => {
     promise.then((value) => {
-    
+
       this.setState({data: value.result, loading: false, show: !this.state.show});
       this.parseDataFromApi();
-     
+
     }).catch((error) => {
       console.error(error);
     });
@@ -138,7 +148,7 @@ parseDataFromApi=()=>{
         },
         sorter: (a, b) => a.timeStamp - b.timeStamp,
         sortOrder: sortedInfo.columnKey === 'timeStamp' && sortedInfo.order,
-      }, 
+      },
       //    {
       //   title: 'Amount(ETH) ',
       //   dataIndex: 'value',
@@ -155,7 +165,7 @@ parseDataFromApi=()=>{
         width: "15%",
         render: (text, record) => (
           <Popover content={record.from} title="from" trigger="hover">
-            <Button>Centrality Visa Account</Button>
+            <Button>Centrality Business Account</Button>
           </Popover>
         ),
       },
@@ -172,7 +182,7 @@ parseDataFromApi=()=>{
         ),
 
 
-      }, 
+      },
 
 
       {
@@ -184,9 +194,6 @@ parseDataFromApi=()=>{
           return (text * Math.pow(10, -18) * record.gasPrice).toFixed(8);
         },
       },
-
-
-
 
 
       // {
@@ -235,13 +242,13 @@ parseDataFromApi=()=>{
             >
 
               <OptGroup label="GST">
-                <Option value="1">office purchase</Option>
-                <Option value="2">computer purchase</Option>
-                   <Option value="3"> General Expenses</Option>
-                          <Option value="4">  Rent</Option>
-                                 <Option value="5"> Staff Expenses</Option>
-               
-               
+                <Option value="1">Legal Fees</Option>
+                <Option value="2">Computer Expenses</Option>
+                <Option value="3">General Expenses</Option>
+                <Option value="4">Rent</Option>
+                <Option value="5"> Staff Expenses</Option>
+
+
               </OptGroup>
 
               <OptGroup label="Non-GST">
@@ -256,13 +263,15 @@ parseDataFromApi=()=>{
       <div>
 
         <div className="tableList">
-          <div  className="table-operations">
-            
-            <Button   onClick={ this.clearFilters }> By Type </Button>
-            
-             <Dropdown overlay={menu} placement="bottomLeft">
-      <Button >Summary</Button>
-    </Dropdown>
+          <div className="table-operations">
+
+
+            <Dropdown overlay={menuType} placement="bottomLeft">
+              <Button >Type</Button>
+            </Dropdown>
+            <Dropdown overlay={menu} placement="bottomLeft">
+              <Button >Summary</Button>
+            </Dropdown>
 
 
             <Button icon="download">
