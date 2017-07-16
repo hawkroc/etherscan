@@ -1,5 +1,4 @@
 import createG2 from 'g2-react';
-import { Stat } from 'g2';
 import React, { Component } from 'react';
 const dataTemp=[
   {

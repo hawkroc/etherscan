@@ -1,13 +1,13 @@
 // import { Input, Icon } from 'antd';
-import { Row, Col,Affix } from 'antd';
-import { Form, Input, Button, Icon } from 'antd';
+import { Row, Col } from 'antd';
+import { Form, Button, Icon } from 'antd';
 import React, { Component } from 'react';
 import TimeRelatedForm from './searchTime';
 import {GetdataFromApi,GetCurrentBlock} from './fetchjson';
 
-import axios from 'axios';
+
 const configaddress="0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae";
-const FormItem = Form.Item;
+//const FormItem = Form.Item;
 const logo="./img/blockeeper_Blue.png";
 class InputSearch extends React.Component {
  constructor(props) {

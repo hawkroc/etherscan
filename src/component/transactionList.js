@@ -1,13 +1,12 @@
-import {Table, Button, Icon, notification} from 'antd';
+import {Table, Button, notification} from 'antd';
 import {Menu, Dropdown} from 'antd';
 import React from 'react';
-import json2csv from 'json2csv';
 import {CSVLink} from 'react-csv';
 import {Select, Popover} from 'antd';
 const {Option, OptGroup} = Select;
 
-const config = {size: 'large',};
-const fields = ['BlockNumber', 'Time'];
+// const config = {size: 'large',};
+// const fields = ['BlockNumber', 'Time'];
 const menu = (
   <Menu>
     <Menu.Item>
@@ -95,7 +94,7 @@ class TransactionList extends React.Component {
 
   setPromise = (promise) => {
     promise.then((value) => {
-
+     console.log("this is value :"+value.result);
       this.setState({data: value.result, loading: false, show: !this.state.show});
       this.parseDataFromApi();
 

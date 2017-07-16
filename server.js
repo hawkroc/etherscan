@@ -2,15 +2,14 @@
 'use strict'
 const  schedule = require('./server/schedule');
 const express = require('express');
-const mongoose = require('mongoose');
+
 const bodyParser = require('body-parser');
-const  record = require('./model/records');
 const app = express();
 const router = express.Router();
 
+
 const port = 3001;
-const uri = 'mongodb://localhost:27017/demo';
-mongoose.createConnection(uri, { server: { poolSize: 4 }});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
