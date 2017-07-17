@@ -284,7 +284,7 @@ class TransactionList extends React.Component {
             columns={ columns }
             dataSource={this.state.data }
             onChange={ this.handleChange }
-            pagination={{pageSize: 500}}
+            pagination={{pageSize: 50}}
             scroll={{y: 500}}
           />
         </div >
