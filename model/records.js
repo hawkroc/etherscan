@@ -21,6 +21,7 @@ const RecordsSchema = new Schema({
   confirmations:String,
   value:Number,
   time:Date,
+  month:String,
   type:String
 
 
