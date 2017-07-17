@@ -1,4 +1,4 @@
-const address="0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae";
+//const address="0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae";
 const base="http://api.etherscan.io/api?"
 const accountUrl="module=account&action=txlist&address=";
 const currentBlock="module=proxy&action=eth_blockNumber";
@@ -23,10 +23,14 @@ const  axios = require('axios');
 }
 
 
- GetdataFromApi = (startblock, endblock) => { 
+ GetdataFromApi = (startblock, endblock,address) => { 
  let final = base+accountUrl+address+"&startblock="+startblock+"&endblock="+endblock+"&sort=asc" + key;
-   // console.log(final);
+    console.log(final);
+   // timeStamp
    return axios.get(final).then((response)=>{
+  // response.data.result=[..., Date(parseInt(timeStamp) * 1000).toLocaleDateString()];
+
+
    	return response;
    })
 };

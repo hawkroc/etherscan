@@ -8,7 +8,7 @@ export const GetdataFromApi = (start, end,configaddress,isFirst) => {
        end=end>0?currentNumber:Math.round(end)+currentNumber;
         start=start>0?currentNumber:Math.round(start)+currentNumber;
       }
-    let final = url +configaddress+"&startblock="+ start + "&endblock=" + end + "&sort=asc" + key;
+    let final = url +configaddress+"&startblock="+ start + "&endblock=" + end + "&sort=desc" + key;
     console.log(final);
     return fetch(final, {
         method: 'get'
@@ -27,7 +27,7 @@ export const GetCurrentBlock = (address) => {
    return axios.get(final).then(
    	(response) =>{  
        currentNumber=parseInt(response.data.result, 16);
-       console.log("currentNumber"+currentNumber);
-   		return  GetdataFromApi(currentNumber-150000,currentNumber,address,true);}
+      
+   		return  GetdataFromApi(1,currentNumber,address,true);}
    	);
 }

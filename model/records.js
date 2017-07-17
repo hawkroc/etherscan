@@ -6,19 +6,21 @@ const mongoose = require('../server/db.js'),
       Schema = mongoose.Schema;
 
 const RecordsSchema = new Schema({
-  blockNumber: String,
+  address:String,
+  blockNumber: Number,
   timeStamp: String,
   from:String,
   to:String,
-  gas:String,
-  gasPrice:String,
+  gas:Number,
+  gasPrice:Number,
   isError:String,
   input:String,
   contractAddress:String,
   cumulativeGasUsed:String,
   gasUsed:String,
   confirmations:String,
-  value:String,
+  value:Number,
+  time:Date,
   type:String
 
 
